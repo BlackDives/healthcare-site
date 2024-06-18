@@ -23,9 +23,11 @@ const Links = [
 
 export default function Home() {
 	return (
-		<main
-			className={styles.main}
-			style={{ width: "100%", backgroundColor: "teal", color: "black" }}
+		<Flex
+			flexDirection='column'
+			backgroundColor='grey.50'
+			width='100%'
+			color='grey.950'
 		>
 			<div
 				className={styles.description}
@@ -104,11 +106,8 @@ export default function Home() {
 							more about how we can help.
 						</Text>
 					</Flex>
-					{/* <Flex>
-						<Image boxSize='100px' src={`${ImageMan}`} />
-					</Flex> */}
 				</Flex>
 			</Flex>
-		</main>
+		</Flex>
 	)
 }
