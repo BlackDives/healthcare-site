@@ -10,6 +10,8 @@ import {
 	Input,
 	Image,
 	Textarea,
+	Grid,
+	GridItem,
 } from "@chakra-ui/react"
 import styles from "./page.module.css"
 import ImageMan from "@/assets/svgs/helping.svg"
@@ -58,8 +60,9 @@ export default function Home() {
 			width='100%'
 			color='grey.950'
 		>
-			<Flex
+			<Grid
 				className='nav-bar'
+				templateColumns='repeat(3, 1fr)'
 				background='grey.50'
 				flexDirection='row'
 				alignItems='center'
@@ -67,22 +70,22 @@ export default function Home() {
 				width='100%'
 				height='100px'
 			>
-				<Flex
+				<GridItem
+					colSpan={1}
 					flexDirection='row'
 					alignItems='center'
 					justifyContent='flex-start'
 					height='100%'
-					width='35%'
 				>
 					<Text marginLeft={10} fontSize='25px' fontWeight={700}>
 						Blur <span style={{ color: "#713f12" }}>This</span> Out
 					</Text>
-				</Flex>
-				<Flex
+				</GridItem>
+				<GridItem
+					colSpan={2}
 					flexDirection='row'
 					alignItems='center'
 					justifyContent='flex-start'
-					width='65%'
 					height='100%'
 				>
 					<UnorderedList
@@ -92,14 +95,18 @@ export default function Home() {
 					>
 						{Links.map((link) => (
 							<ListItem key={link.id} padding={5}>
-								<Link fontSize='16px' fontWeight={500}>
+								<Link
+									fontSize='16px'
+									fontWeight={500}
+									_hover={{ textDecoration: "none", color: "primary.900" }}
+								>
 									{link.title}
 								</Link>
 							</ListItem>
 						))}
 					</UnorderedList>
-				</Flex>
-			</Flex>
+				</GridItem>
+			</Grid>
 			<Flex
 				flexDirection='column'
 				justifyContent='flex-start'
@@ -299,10 +306,56 @@ export default function Home() {
 								color='white'
 								width='200px'
 								padding={7}
+								_hover={{}}
 							>
 								Send
 							</Button>
 						</Flex>
+					</Flex>
+				</Flex>
+			</Flex>
+			<Flex backgroundColor='primary.900' height='50vh' color='grey.50'>
+				<Flex
+					flexDirection='row'
+					maxWidth='1500px'
+					margin='auto'
+					height='100%'
+					width='100%'
+					paddingY={10}
+				>
+					<Flex flexDirection='column' width='33%' marginX={5}>
+						<Text fontSize='30px' fontWeight={700} color='gray.100'>
+							About
+						</Text>
+						<Text>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed
+							velit eu sapien hendrerit tincidunt. Praesent nec sollicitudin
+							mauris. Cras sit amet ex lacinia, eleifend erat mollis, commodo
+							erat. Proin eget tincidunt odio. Donec erat augue, vestibulum in
+							molestie pellentesque, sagittis non leo. Pellentesque feugiat
+							velit consectetur arcu vestibulum, id lobortis urna vehicula. In
+							quis mi sapien.
+						</Text>
+					</Flex>
+					<Flex flexDirection='column' width='33%' marginX={5}>
+						<Text fontSize='30px' fontWeight={700} color='gray.100'>
+							Site Map
+						</Text>
+						<UnorderedList>
+							{Links.map((link) => (
+								<ListItem listStyleType='none'>
+									<Link>{link.title}</Link>
+								</ListItem>
+							))}
+						</UnorderedList>
+					</Flex>
+					<Flex flexDirection='column' width='33%' marginX={5}>
+						<Text fontSize='30px' fontWeight={700} color='gray.100'>
+							Contact
+						</Text>
+						<Text>Moor Elite Homecare</Text>
+						<Text>555-555-555</Text>
+						<Text>moorelitehomecare@gmail.com</Text>
 					</Flex>
 				</Flex>
 			</Flex>
