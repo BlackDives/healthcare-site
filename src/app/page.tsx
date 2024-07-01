@@ -70,42 +70,45 @@ export default function Home() {
 				width='100%'
 				height='100px'
 			>
-				<GridItem
-					colSpan={1}
-					flexDirection='row'
-					alignItems='center'
-					justifyContent='flex-start'
-					height='100%'
-				>
-					<Text marginLeft={10} fontSize='25px' fontWeight={700}>
-						Blur <span style={{ color: "#713f12" }}>This</span> Out
-					</Text>
-				</GridItem>
-				<GridItem
-					colSpan={2}
-					flexDirection='row'
-					alignItems='center'
-					justifyContent='flex-start'
-					height='100%'
-				>
-					<UnorderedList
-						display='flex'
+				<GridItem colSpan={1}>
+					<Flex
 						flexDirection='row'
-						listStyleType='none'
+						alignItems='center'
+						justifyContent='flex-start'
+						height='100%'
 					>
-						{Links.map((link) => (
-							<ListItem key={link.id} padding={5}>
-								<Link
-									fontSize='16px'
-									fontWeight={500}
-									_hover={{ textDecoration: "none", color: "primary.900" }}
-								>
-									{link.title}
-								</Link>
-							</ListItem>
-						))}
-					</UnorderedList>
+						<Text marginLeft={10} fontSize='25px' fontWeight={700}>
+							Blur <span style={{ color: "#713f12" }}>This</span> Out
+						</Text>
+					</Flex>
 				</GridItem>
+				<GridItem colSpan={1}>
+					<Flex
+						flexDirection='row'
+						alignItems='center'
+						justifyContent='center'
+						height='100%'
+					>
+						<UnorderedList
+							display='flex'
+							flexDirection='row'
+							listStyleType='none'
+						>
+							{Links.map((link) => (
+								<ListItem key={link.id} padding={5}>
+									<Link
+										fontSize='16px'
+										fontWeight={500}
+										_hover={{ textDecoration: "none", color: "primary.900" }}
+									>
+										{link.title}
+									</Link>
+								</ListItem>
+							))}
+						</UnorderedList>
+					</Flex>
+				</GridItem>
+				<GridItem colSpan={1}></GridItem>
 			</Grid>
 			<Flex
 				flexDirection='column'
@@ -125,10 +128,20 @@ export default function Home() {
 					margin='auto'
 				>
 					<Flex flexDirection='column' marginTop={20}>
-						<Text fontSize='70px' fontWeight={700} color='grey.50'>
+						<Text
+							fontSize='70px'
+							fontWeight={700}
+							color='grey.50'
+							lineHeight={1}
+						>
 							Quality <span style={{ color: "#713f12" }}>Healthcare</span>
 						</Text>
-						<Text fontSize='70px' fontWeight={700} color='grey.50'>
+						<Text
+							fontSize='70px'
+							fontWeight={700}
+							color='grey.50'
+							lineHeight={1}
+						>
 							In Your Home
 						</Text>
 
