@@ -41,33 +41,83 @@ const Links = [
 	{ id: 4, title: "CONTACT", href: "/" },
 ]
 
+// const Servicess = [
+// 	{
+// 		id: 1,
+// 		title: "Personal Care and Hygiene Support",
+// 		description:
+// 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed velit eu sapien hendrerit tincidunt. Praesent nec sollicitudin mauris.",
+// 		logo: <FaHandHoldingMedical size={35} color='#365314' />,
+// 	},
+// 	{
+// 		id: 2,
+// 		title: "Daily Living and Household Management",
+// 		description:
+// 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed velit eu sapien hendrerit tincidunt. Praesent nec sollicitudin mauris.",
+// 		logo: <FaBriefcaseMedical size={35} color='#365314' />,
+// 	},
+// 	{
+// 		id: 3,
+// 		title: "Health and Medication Coordination",
+// 		description:
+// 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed velit eu sapien hendrerit tincidunt. Praesent nec sollicitudin mauris.",
+// 		logo: <FaHeartPulse size={35} color='#365314' />,
+// 	},
+// 	{
+// 		id: 4,
+// 		title: "Companionship and Respite Services",
+// 		description:
+// 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed velit eu sapien hendrerit tincidunt. Praesent nec sollicitudin mauris.",
+// 		logo: <FaHouseMedicalCircleExclamation size={35} color='#365314' />,
+// 	},
+// ]
+
 const Services = [
 	{
 		id: 1,
-		title: "Personal Care and Hygiene Support",
-		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed velit eu sapien hendrerit tincidunt. Praesent nec sollicitudin mauris.",
+		title: "Personal Caregiving Services",
+		description: [
+			"Bathing and Personal Assistance",
+			"Grooming, and Dressing",
+			"Medication Reminders",
+			"Assist with Mobility, Transfer and Exercise",
+			"Meaningful companionship.",
+		],
 		logo: <FaHandHoldingMedical size={35} color='#365314' />,
 	},
 	{
 		id: 2,
-		title: "Daily Living and Household Management",
-		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed velit eu sapien hendrerit tincidunt. Praesent nec sollicitudin mauris.",
+		title: "Daily Living Household Management",
+		description: [
+			"Meal Preparation",
+			"Light housekeeping",
+			"Laundry",
+			"Errands and Shopping",
+			"Prescription pickup/delivery",
+			"Pet assistance",
+		],
 		logo: <FaBriefcaseMedical size={35} color='#365314' />,
 	},
 	{
 		id: 3,
-		title: "Health and Medication Coordination",
-		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed velit eu sapien hendrerit tincidunt. Praesent nec sollicitudin mauris.",
+		title: "Social Connection",
+		description: [
+			"Transportation to Office Visits",
+			"Attend religious services",
+			"Attend community events",
+			"Visits to family and friends",
+		],
 		logo: <FaHeartPulse size={35} color='#365314' />,
 	},
 	{
 		id: 4,
-		title: "Companionship and Respite Services",
-		description:
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed velit eu sapien hendrerit tincidunt. Praesent nec sollicitudin mauris.",
+		title: "Companionship Care Services",
+		description: [
+			"Overnight care",
+			"Relief for Primary Caregiver",
+			"Weekend and Vacation Relief",
+			"Transportation to appointments, social activities",
+		],
 		logo: <FaHouseMedicalCircleExclamation size={35} color='#365314' />,
 	},
 ]
@@ -287,16 +337,14 @@ export default function Home() {
 							textAlign={["center", "center", "center", "initial"]}
 							marginTop={2}
 						>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed
-							velit eu sapien hendrerit tincidunt. Praesent nec sollicitudin
-							mauris. Cras sit amet ex lacinia, eleifend erat mollis, commodo
-							erat. Proin eget tincidunt odio. Donec erat augue, vestibulum in
-							molestie pellentesque, sagittis non leo. Pellentesque feugiat
-							velit consectetur arcu vestibulum, id lobortis urna vehicula. In
-							quis mi sapien. Duis tempus interdum scelerisque. Nulla facilisi.
-							Duis gravida massa imperdiet enim facilisis, nec rutrum mauris
-							pellentesque. Donec vitae ipsum viverra, vehicula odio vel,
-							volutpat metus.
+							At Moor Elite Homecare, we are dedicated to enhancing the quality
+							of life for our clients through compassionate, reliable, and
+							personalized in-home care services. We understand the unique needs
+							of each individual, and our mission is to foster independence,
+							dignity, and meaningful connections for those we serve. Our team
+							of skilled caregivers is committed to delivering the highest
+							standard of care, ensuring that each client feels valued and
+							supported.
 						</Text>
 						<Button
 							backgroundColor='primary.900'
@@ -371,7 +419,15 @@ export default function Home() {
 									<Text fontSize='16px' fontWeight={700} color='accent.900'>
 										{service.title}
 									</Text>
-									<Text>{service.description}</Text>
+									<Flex>
+										<UnorderedList>
+											{service.description.map((descriptionItem) => (
+												<ListItem>
+													<Text>{descriptionItem}</Text>
+												</ListItem>
+											))}
+										</UnorderedList>
+									</Flex>
 								</Flex>
 							))}
 						</Flex>
@@ -500,13 +556,14 @@ export default function Home() {
 							About
 						</Text>
 						<Text>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed
-							velit eu sapien hendrerit tincidunt. Praesent nec sollicitudin
-							mauris. Cras sit amet ex lacinia, eleifend erat mollis, commodo
-							erat. Proin eget tincidunt odio. Donec erat augue, vestibulum in
-							molestie pellentesque, sagittis non leo. Pellentesque feugiat
-							velit consectetur arcu vestibulum, id lobortis urna vehicula. In
-							quis mi sapien.
+							At Moor Elite Homecare, we are dedicated to enhancing the quality
+							of life for our clients through compassionate, reliable, and
+							personalized in-home care services. We understand the unique needs
+							of each individual, and our mission is to foster independence,
+							dignity, and meaningful connections for those we serve. Our team
+							of skilled caregivers is committed to delivering the highest
+							standard of care, ensuring that each client feels valued and
+							supported.
 						</Text>
 					</Flex>
 					<Flex
