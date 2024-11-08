@@ -152,7 +152,7 @@ export default function Home() {
 						height='100%'
 					>
 						<Text marginLeft={10} fontSize='25px' fontWeight={700}>
-							Moor <span style={{ color: "#713f12" }}>Elite</span> Homecare
+							Moor <span style={{ color: "#713f12" }}>Elite</span> Home Care
 						</Text>
 					</Flex>
 				</GridItem>
@@ -196,7 +196,7 @@ export default function Home() {
 			>
 				<Flex>
 					<Text marginLeft={10} fontSize='25px' fontWeight={700}>
-						Moor <span style={{ color: "#713f12" }}>Elite</span> Homecare
+						Moor <span style={{ color: "#713f12" }}>Elite</span> Home Care
 					</Text>
 				</Flex>
 				<Button
@@ -331,13 +331,13 @@ export default function Home() {
 							color='primary.900'
 							textAlign={["center", "center", "center", "initial"]}
 						>
-							We Are Leading Specialist Homecare Experts
+							We Are Leading Specialist Home Care Experts
 						</Text>
 						<Text
 							textAlign={["center", "center", "center", "initial"]}
 							marginTop={2}
 						>
-							At Moor Elite Homecare, we are dedicated to enhancing the quality
+							At Moor Elite Home Care, we are dedicated to enhancing the quality
 							of life for our clients through compassionate, reliable, and
 							personalized in-home care services. We understand the unique needs
 							of each individual, and our mission is to foster independence,
@@ -556,7 +556,7 @@ export default function Home() {
 							About
 						</Text>
 						<Text>
-							At Moor Elite Homecare, we are dedicated to enhancing the quality
+							At Moor Elite Home Care, we are dedicated to enhancing the quality
 							of life for our clients through compassionate, reliable, and
 							personalized in-home care services. We understand the unique needs
 							of each individual, and our mission is to foster independence,
@@ -594,8 +594,9 @@ export default function Home() {
 						<Text fontSize='30px' fontWeight={700} color='gray.100'>
 							Contact
 						</Text>
-						<Text>Moor Elite Homecare</Text>
-						<Text>555-555-555</Text>
+						<Text>Moor Elite Home Care</Text>
+						<Text>Surprise, AZ</Text>
+						<Text>602-884-0691</Text>
 						<Text>moorelitehomecare@gmail.com</Text>
 					</Flex>
 				</Flex>
