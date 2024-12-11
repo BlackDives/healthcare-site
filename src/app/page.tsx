@@ -21,6 +21,7 @@ import {
 	DrawerContent,
 	DrawerCloseButton,
 	useDisclosure,
+	SimpleGrid,
 } from "@chakra-ui/react"
 import {
 	FaBriefcaseMedical,
@@ -40,37 +41,6 @@ const Links = [
 	{ id: 3, title: "SERVICES", href: "/" },
 	{ id: 4, title: "CONTACT", href: "/" },
 ]
-
-// const Servicess = [
-// 	{
-// 		id: 1,
-// 		title: "Personal Care and Hygiene Support",
-// 		description:
-// 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed velit eu sapien hendrerit tincidunt. Praesent nec sollicitudin mauris.",
-// 		logo: <FaHandHoldingMedical size={35} color='#365314' />,
-// 	},
-// 	{
-// 		id: 2,
-// 		title: "Daily Living and Household Management",
-// 		description:
-// 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed velit eu sapien hendrerit tincidunt. Praesent nec sollicitudin mauris.",
-// 		logo: <FaBriefcaseMedical size={35} color='#365314' />,
-// 	},
-// 	{
-// 		id: 3,
-// 		title: "Health and Medication Coordination",
-// 		description:
-// 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed velit eu sapien hendrerit tincidunt. Praesent nec sollicitudin mauris.",
-// 		logo: <FaHeartPulse size={35} color='#365314' />,
-// 	},
-// 	{
-// 		id: 4,
-// 		title: "Companionship and Respite Services",
-// 		description:
-// 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed velit eu sapien hendrerit tincidunt. Praesent nec sollicitudin mauris.",
-// 		logo: <FaHouseMedicalCircleExclamation size={35} color='#365314' />,
-// 	},
-// ]
 
 const Services = [
 	{
@@ -117,6 +87,51 @@ const Services = [
 			"Relief for Primary Caregiver",
 			"Weekend and Vacation Relief",
 			"Transportation to appointments, social activities",
+		],
+		logo: <FaHouseMedicalCircleExclamation size={35} color='#365314' />,
+	},
+	{
+		id: 5,
+		title: "Postpartum Care",
+		description: [
+			"We focus on making your environment as comfortable as possible, allowing you to focus on bonding with and feeding your newborn.",
+			"Light Housekeeping: Laundry, Cooking, Caring for Other Children, Companionship",
+		],
+		logo: <FaHouseMedicalCircleExclamation size={35} color='#365314' />,
+	},
+	{
+		id: 6,
+		title: "After Hospital/Surgery Care",
+		description: [
+			"Transportation to follow-up appointments and errands",
+			"Medication reminders and communication with healthcare providers",
+			"Meal preparation and support following discharge orders",
+			"Assistance with mobility and safe transfers",
+		],
+		logo: <FaHouseMedicalCircleExclamation size={35} color='#365314' />,
+	},
+	{
+		id: 7,
+		title: "Family Caregiver Support Services",
+		description: [
+			"Help with daily activities (bathing, grooming, safe toileting, and mobility)",
+			"Meal prep, medication reminders, and basic errands",
+			"Support for appointments, technology setup, and pet care",
+		],
+		logo: <FaHouseMedicalCircleExclamation size={35} color='#365314' />,
+	},
+
+	{
+		id: 8,
+		title: "24-Hour Care",
+		description: [
+			"Mobility around the home",
+			"Bathing, grooming, and personal hygiene",
+			"Medication reminders",
+			"Meal planning and prep",
+			"Running errands",
+			"Companionship",
+			"Light housekeeping and laundry",
 		],
 		logo: <FaHouseMedicalCircleExclamation size={35} color='#365314' />,
 	},
@@ -373,14 +388,14 @@ export default function Home() {
 			</Flex>
 			<Flex
 				backgroundColor='grey.200'
-				height={["initial", "initial", "initial", "50vh"]}
+				height={["initial", "initial", "initial", "60vh"]}
 			>
 				<Flex
 					maxWidth='1500px'
 					width='100%'
 					margin='auto'
 					height='100%'
-					paddingY={10}
+					paddingY={15}
 				>
 					<Flex
 						width='100%'
@@ -397,40 +412,34 @@ export default function Home() {
 						>
 							What we offer
 						</Text>
-						<Flex
-							flexDirection={["column", "column", "column", "row"]}
-							alignItems={["center", "center", "center", "initial"]}
+						<SimpleGrid
+							columns={[1, 1, 2, 4]} // 1 column on smaller screens, 4 columns on larger
+							spacing={2} // space between grid items
 						>
 							{Services.map((service) => (
 								<Flex
+									key={service.title}
 									flexDirection='column'
 									backgroundColor='grey.50'
-									margin={2}
-									padding={2}
-									width={["95%", "95%", "50%", "25%"]}
+									padding={4}
+									alignItems='center'
 								>
-									<Flex
-										flexDirection='row'
-										justifyContent='center'
-										paddingY={3}
-									>
+									<Flex justifyContent='center' paddingY={3}>
 										{service.logo}
 									</Flex>
 									<Text fontSize='16px' fontWeight={700} color='accent.900'>
 										{service.title}
 									</Text>
-									<Flex>
-										<UnorderedList>
-											{service.description.map((descriptionItem) => (
-												<ListItem>
-													<Text>{descriptionItem}</Text>
-												</ListItem>
-											))}
-										</UnorderedList>
-									</Flex>
+									<UnorderedList minHeight={"100px"}>
+										{service.description.map((descriptionItem, index) => (
+											<ListItem key={index}>
+												<Text>{descriptionItem}</Text>
+											</ListItem>
+										))}
+									</UnorderedList>
 								</Flex>
 							))}
-						</Flex>
+						</SimpleGrid>
 					</Flex>
 				</Flex>
 			</Flex>
