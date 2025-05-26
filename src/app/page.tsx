@@ -1,5 +1,6 @@
 "use client"
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
+import emailjs from "@emailjs/browser"
 import {
 	Flex,
 	Text,
@@ -139,7 +140,37 @@ const Services = [
 
 export default function Home() {
 	const { isOpen, onOpen, onClose } = useDisclosure()
+	const [name, setName] = useState<string>("")
+	const [email, setEmail] = useState<string>("")
+	const [message, setMessage] = useState<string>("")
 	const btnRef = React.useRef()
+	const form = useRef<HTMLFormElement>(null)
+
+	const sendEmail = (e) => {
+		e.preventDefault()
+		if (!form || !process.env.NEXT_PUBLIC_EJS_Service_Id) {
+			return
+		}
+
+		console.log(`name: ${name}\nemail: ${email}\nmessage: ${message}`)
+		emailjs
+			.sendForm(
+				process.env.NEXT_PUBLIC_EJS_Service_Id,
+				"contact_form",
+				form.current,
+				{
+					publicKey: process.env.NEXT_PUBLIC_EJS_Public_Key,
+				}
+			)
+			.then(
+				() => {
+					console.log("Success")
+				},
+				(error) => {
+					console.log(error)
+				}
+			)
+	}
 
 	return (
 		<Flex
@@ -443,104 +474,119 @@ export default function Home() {
 					</Flex>
 				</Flex>
 			</Flex>
-			<Flex backgroundColor='grey.50' height={["60vh", "60vh", "60vh", "50vh"]}>
+			<form ref={form} onSubmit={sendEmail}>
 				<Flex
-					flexDirection='column'
-					alignItems={["center", "center", "center", "initial"]}
-					maxWidth='1500px'
-					width='100%'
-					margin='auto'
-					height='100%'
-					paddingY={10}
+					backgroundColor='grey.50'
+					height={["60vh", "60vh", "60vh", "50vh"]}
 				>
 					<Flex
-						width='100%'
 						flexDirection='column'
 						alignItems={["center", "center", "center", "initial"]}
+						maxWidth='1500px'
+						width='100%'
+						margin='auto'
+						height='100%'
+						paddingY={10}
 					>
-						<Text
-							fontSize={["30px", "30px", "42px"]}
-							fontWeight={700}
-							color='primary.900'
+						<Flex
+							width='100%'
+							flexDirection='column'
+							alignItems={["center", "center", "center", "initial"]}
 						>
-							Contact Us!
-						</Text>
-					</Flex>
-					<Flex width={["95%", "95%", "95%", "50%"]} flexDirection='column'>
-						<Flex flexDirection='column' marginBottom={3}>
 							<Text
-								fontSize='16px'
+								fontSize={["30px", "30px", "42px"]}
 								fontWeight={700}
 								color='primary.900'
-								marginBottom={1}
 							>
-								Name
+								Contact Us!
 							</Text>
-							<Input
-								placeholder='Enter your full name here...'
-								border='2px solid'
-								borderColor='primary.900'
-								_focus={{
-									border: "4px solid",
-									borderColor: "accent.900",
-									boxShadow: "none",
-								}}
-							/>
 						</Flex>
-						<Flex flexDirection='column' marginBottom={3}>
-							<Text
-								fontSize='16px'
-								fontWeight={700}
-								color='primary.900'
-								marginBottom={1}
-							>
-								Email
-							</Text>
-							<Input
-								placeholder='Give us a good email to reach you at...'
-								border='2px solid'
-								borderColor='primary.900'
-								_focus={{
-									border: "4px solid",
-									borderColor: "accent.900",
-									boxShadow: "none",
-								}}
-							/>
-						</Flex>
-						<Flex flexDirection='column' marginBottom={3}>
-							<Text
-								fontSize='16px'
-								fontWeight={700}
-								color='primary.900'
-								marginBottom={1}
-							>
-								Message
-							</Text>
-							<Textarea
-								placeholder='How can we help you out?'
-								border='2px solid'
-								borderColor='primary.900'
-								_focus={{
-									border: "4px solid",
-									borderColor: "accent.900",
-									boxShadow: "none",
-								}}
-							/>
-						</Flex>
-						<Flex>
-							<Button
-								backgroundColor='primary.900'
-								color='white'
-								width={["100%", "100%", "200px", "200px"]}
-								padding={7}
-								_hover={{ backgroundColor: "accent.900" }}
-							>
-								Send
-							</Button>
+						<Flex width={["95%", "95%", "95%", "50%"]} flexDirection='column'>
+							<Flex flexDirection='column' marginBottom={3}>
+								<Text
+									fontSize='16px'
+									fontWeight={700}
+									color='primary.900'
+									marginBottom={1}
+								>
+									Name
+								</Text>
+								<Input
+									placeholder='Enter your full name here...'
+									border='2px solid'
+									borderColor='primary.900'
+									value={name}
+									name='name'
+									onChange={(e) => setName(e.target.value)}
+									_focus={{
+										border: "4px solid",
+										borderColor: "accent.900",
+										boxShadow: "none",
+									}}
+								/>
+							</Flex>
+							<Flex flexDirection='column' marginBottom={3}>
+								<Text
+									fontSize='16px'
+									fontWeight={700}
+									color='primary.900'
+									marginBottom={1}
+								>
+									Email
+								</Text>
+								<Input
+									placeholder='Give us a good email to reach you at...'
+									border='2px solid'
+									borderColor='primary.900'
+									value={email}
+									name='email'
+									onChange={(e) => setEmail(e.target.value)}
+									_focus={{
+										border: "4px solid",
+										borderColor: "accent.900",
+										boxShadow: "none",
+									}}
+								/>
+							</Flex>
+							<Flex flexDirection='column' marginBottom={3}>
+								<Text
+									fontSize='16px'
+									fontWeight={700}
+									color='primary.900'
+									marginBottom={1}
+								>
+									Message
+								</Text>
+								<Textarea
+									placeholder='How can we help you out?'
+									border='2px solid'
+									borderColor='primary.900'
+									value={message}
+									name='message'
+									onChange={(e) => setMessage(e.target.value)}
+									_focus={{
+										border: "4px solid",
+										borderColor: "accent.900",
+										boxShadow: "none",
+									}}
+								/>
+							</Flex>
+							<Flex>
+								<Button
+									backgroundColor='primary.900'
+									color='white'
+									width={["100%", "100%", "200px", "200px"]}
+									padding={7}
+									_hover={{ backgroundColor: "accent.900" }}
+									type='submit'
+								>
+									Send
+								</Button>
+							</Flex>
 						</Flex>
 					</Flex>
 				</Flex>
-			</Flex>
+			</form>
 			<Flex
 				backgroundColor='primary.900'
 				height={["initial", "initial", "initial", "50vh"]}
@@ -586,8 +632,8 @@ export default function Home() {
 							Site Map
 						</Text>
 						<UnorderedList>
-							{Links.map((link) => (
-								<ListItem listStyleType='none'>
+							{Links.map((link, index) => (
+								<ListItem listStyleType='none' key={index}>
 									<Link>{link.title}</Link>
 								</ListItem>
 							))}
