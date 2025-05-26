@@ -143,10 +143,9 @@ export default function Home() {
 	const [name, setName] = useState<string>("")
 	const [email, setEmail] = useState<string>("")
 	const [message, setMessage] = useState<string>("")
-	const btnRef = React.useRef()
 	const form = useRef<HTMLFormElement>(null)
 
-	const sendEmail = (e: SubmitEvent) => {
+	const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		if (!form || !process.env.NEXT_PUBLIC_EJS_Service_Id) {
 			return
@@ -157,7 +156,7 @@ export default function Home() {
 			.sendForm(
 				process.env.NEXT_PUBLIC_EJS_Service_Id,
 				"contact_form",
-				form.current,
+				form.current!,
 				{
 					publicKey: process.env.NEXT_PUBLIC_EJS_Public_Key,
 				}
