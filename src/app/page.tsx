@@ -146,7 +146,7 @@ export default function Home() {
 	const btnRef = React.useRef()
 	const form = useRef<HTMLFormElement>(null)
 
-	const sendEmail = (e) => {
+	const sendEmail = (e: SubmitEvent) => {
 		e.preventDefault()
 		if (!form || !process.env.NEXT_PUBLIC_EJS_Service_Id) {
 			return
